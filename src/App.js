@@ -1,10 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/Nav";
 import { useState } from "react";
 import Songs from "./components/Songs";
 import { Route, Redirect } from "react-router-dom";
-import Search from "./components/Search";
 import Playlists from "./components/Playlists";
 import CreatePlaylists from "./components/CreatePlaylists";
 
@@ -13,7 +11,7 @@ function App() {
     { name: "All Songs", isActiveTab: false, link: "/allSongs" },
     { name: "Playlists", isActiveTab: false, link: "/playlists" }
   ];
-  const [tabList, setTabList] = useState(tabData);
+  const [tabList] = useState(tabData);
   const [active, setActiveTab] = useState(tabData[0]);
   function setTab(tab) {
     setActiveTab(tab);

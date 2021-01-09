@@ -5,11 +5,8 @@ import "./CustomPagination.css";
 
 function CustomPagination({ showPerPage, onPaginationChange, total }) {
   const [counter, setCounter] = useState(1);
-  //   const renderSongs= currentTodos.map((todo, index) => {
-  //     return <li key={index}>{todo}</li>;
-  //   });
   const [upperPageBound, setUpperPageBound] = useState(10);
-  const [pageBound, setPageBound] = useState(10);
+  const [pageBound] = useState(10);
   const [lowerPageBound, setLowerPageBound] = useState(0);
   const [isPrevBtnActive, setIsPrevBtnActive] = useState("disabled");
   const [isNextBtnActive, setIsNextBtnActive] = useState("");

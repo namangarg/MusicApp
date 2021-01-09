@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Toast } from "react-bootstrap";
 import "./CustomToast.css";
 function CustomToast({ saved, setSaved, message, name }) {
-  const [show, setShow] = useState(true);
-
   return (
     <div className="toastDiv">
       <Toast

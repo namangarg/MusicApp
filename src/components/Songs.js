@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Songs.css";
-import Pagination from "./Pagination";
 import CustomPagination from "./CustomPagination";
 import Song from "./Song";
-import Search from "./Search";
 import { useLocation } from "react-router-dom";
 
 function Songs({ isPlaylist, onPlayListAdd }) {
@@ -11,7 +9,7 @@ function Songs({ isPlaylist, onPlayListAdd }) {
   const [albums, setAlbums] = useState([]);
   const [songs, setSongs] = useState([]);
   const [users, setUsers] = useState([]);
-  const [showPerPage, setShowPerPage] = useState(5);
+  const [showPerPage] = useState(5);
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage
