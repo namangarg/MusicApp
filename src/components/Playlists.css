@@ -1,0 +1,89 @@
+.playlists__add {
+  border: 1px solid black;
+  display: flex;
+  width: 200px;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 230px;
+  flex-shrink: 0;
+}
+
+.playlists__add__icon {
+  transform: scale(2.8);
+  color: white;
+  background-color: rgb(56, 63, 61);
+}
+.playlists__noPlaylist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: white;
+}
+
+.playlists__add_container {
+  display: flex;
+  height: 200px;
+  width: 100%;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  background-color: rgb(56, 63, 61);
+}
+
+.playlists__add__label > span {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: white;
+}
+
+.modal {
+  margin: auto;
+  top: 400px;
+}
+
+.add__modal {
+  display: flex;
+}
+
+.modalcustom {
+  color: white;
+  background-color: black;
+}
+
+.modalcustom .modal-content {
+  background-color: rgb(56, 63, 61);
+}
+.modalCustomBody {
+}
+.customDiv > input {
+  margin: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: rgb(56, 63, 61);
+  border-bottom: 1px solid white;
+}
+
+.customDiv {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.close {
+  color: white;
+}
+
+.playlists {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-shrink: 0;
+  gap: 50px;
+}

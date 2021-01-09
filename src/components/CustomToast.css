@@ -1,0 +1,29 @@
+.customToast {
+  color: white;
+  background-color: rgb(56, 63, 61);
+  display: flex;
+  width: 20%;
+  margin: auto;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-left: 30px;
+  bottom: 30px;
+  margin-bottom: 50px;
+  font-size: 14px;
+  transition: transform 0.3s, opacity 0.3s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  animation: moveUp 0.5s;
+}
+@keyframes moveUp {
+  from {
+    bottom: 0px;
+  }
+  to {
+    bottom: 30px;
+  }
+}
+.toast-header .close {
+  display: none;
+}

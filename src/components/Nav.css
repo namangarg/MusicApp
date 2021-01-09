@@ -1,0 +1,62 @@
+.nav-links {
+  display: flex;
+
+  list-style: none;
+  align-items: center;
+  color: #fa3335;
+  height: 4vh;
+  width: 50%;
+  margin: 5px;
+}
+nav {
+  background-color: #21262c;
+  height: 6vh;
+  margin: auto;
+}
+
+.nav-links > li {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+li:hover {
+  background-color: rgb(56, 63, 61);
+  cursor: pointer;
+}
+.nav-links > li > a {
+  display: block; /* moved to link */
+  font-weight: bold;
+  text-decoration: none !important;
+  line-height: 2.8em;
+  padding-right: 0.5em;
+  width: 100%;
+  color: #696969;
+}
+.activeTab::before {
+  content: "";
+  /* Absolutely positions the underline relative to the button. */
+  position: absolute;
+
+  /* This aligns the underline so that it is at the bottom of the button. */
+  bottom: 0;
+
+  left: 0;
+  width: 50%;
+  left: 25%;
+  height: 2px;
+  background: #ee1c24;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: #fa3335;
+  font-size: 20px;
+}
+.navDetails {
+  display: flex;
+  justify-content: space-around;
+}

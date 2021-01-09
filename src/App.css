@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.songs {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+body {
+  background-color: black;
+}

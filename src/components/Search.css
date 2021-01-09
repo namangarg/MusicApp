@@ -1,0 +1,25 @@
+.searchWrapper > input {
+  outline: none;
+  width: 100%;
+  color: white;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  background-color: black;
+}
+.searchWrapper {
+  display: flex;
+  width: 400px;
+  justify-content: space-around;
+  margin-top: 15px;
+  height: 4vh;
+  background-color: black;
+}
+
+.searchWrapper__searchIcon {
+  color: white;
+
+  height: 4vh !important;
+  margin-left: 10px;
+  width: 30px !important;
+}

@@ -1,0 +1,58 @@
+.leftDetails {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 30px;
+}
+.details {
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+img {
+  border-radius: 150px;
+  width: 80px;
+  height: 80px;
+  margin: 4px;
+  object-fit: contain;
+}
+
+.rightDetails {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+.addToPlaylist {
+  margin-left: 20px;
+  transform: scale(1.2);
+}
+
+.addToPlaylist:hover {
+  cursor: pointer;
+}
+
+.redDelete {
+  color: red;
+}
+
+.redDelete:hover {
+  cursor: pointer;
+}
+
+.details__playtime {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-style: italic;
+  font-weight: 100;
+  justify-content: space-between;
+}
+
+.platime__value {
+  margin-left: 50px;
+}
