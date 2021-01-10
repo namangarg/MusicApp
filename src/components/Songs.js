@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./Songs.css";
 import CustomPagination from "./CustomPagination";
 import Song from "./Song";
@@ -10,18 +10,24 @@ function Songs({ isPlaylist, onPlayListAdd }) {
   const [songs, setSongs] = useState([]);
   const [users, setUsers] = useState([]);
   const [showPerPage] = useState(5);
+  const [searchText, setSearchText] = useState("");
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage
   });
 
   useEffect(() => {
-    if (location.search && location.state) {
+    if (location.state) {
       let text = location.state.detail;
-      let filteredSongs = songs.filter(song => song.title.indexOf(text) !== -1);
-      setSongs([...filteredSongs]);
+      if (searchText !== text) {
+        setSearchText(text);
+        let filteredSongs = JSON.parse(localStorage.getItem("songs")).filter(
+          song => song.title.indexOf(text) !== -1
+        );
+        setSongs(filteredSongs);
+      }
     }
-  }, [location]);
+  }, [location.state, songs, searchText]);
 
   useEffect(() => {
     if (!localStorage.getItem("albums")) {
@@ -58,16 +64,15 @@ function Songs({ isPlaylist, onPlayListAdd }) {
 
     return () => {};
   }, []);
-  const onPaginationChange = (start, end) => {
+  const onPaginationChange = useCallback((start, end) => {
     setPagination({ start, end });
-  };
+  }, []);
 
-  return (
-    <>
+  return songs.length !== 0 ? (
+    <div>
       <div>
         {songs.slice(pagination.start, pagination.end).map(song => {
           let albumDetails = albums.filter(album => album.id === song.albumId);
-          console.log(albumDetails[0]);
           return users.map(user => {
             if (user.id === albumDetails[0].userId) {
               return (
@@ -87,17 +92,15 @@ function Songs({ isPlaylist, onPlayListAdd }) {
           });
         })}
       </div>
-      {/* <Pagination
-        showPerPage={showPerPage}
-        onPaginationChange={onPaginationChange}
-        total={songs.length}
-      /> */}
+
       <CustomPagination
         showPerPage={showPerPage}
         onPaginationChange={onPaginationChange}
         total={songs.length}
       />
-    </>
+    </div>
+  ) : (
+    <div className="songsItems">Loading.....</div>
   );
 }
 

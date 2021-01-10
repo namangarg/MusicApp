@@ -12,13 +12,17 @@ function CreatePlaylists({ match }) {
   const [isSaved, setIsSaved] = useState(false);
   const [message, setMessage] = useState("");
   const [showSongs, setShowSongs] = useState(false);
-  const onSongAdd = id => {
+  const onSongAdd = (id, title, username, albumtitle, thumbnail) => {
     let isFound = songs.filter(item => item.id === id);
     if (isFound.length === 0) {
-      let allSongs = JSON.parse(localStorage.getItem("songs"));
-      setMessage("Song added in this playlist");
-      let song = allSongs.filter(item => item.id === id)[0];
+      let song = {};
+      song.id = id;
+      song.thumbnail = thumbnail;
+      song.title = title;
+      song.username = username;
+      song.albumtitle = albumtitle;
       setSongs([...songs, song]);
+      setMessage("Song added in this playlist");
     } else {
       setMessage("Song already added in this playlist");
     }
@@ -98,8 +102,10 @@ function CreatePlaylists({ match }) {
             <Song
               id={song.id}
               isPlaylist={false}
-              thumbnail={song.thumbnailUrl}
+              thumbnail={song.thumbnail}
               title={song.title}
+              username={song.username}
+              albumtitle={song.albumtitle}
               isAdded={true}
               onPlayListDelete={onPlayListDelete}
             />

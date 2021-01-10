@@ -25,14 +25,15 @@ function Song({
         <label>{albumtitle}</label>
       </div>
       <div className="details__playtime">
-        <span> {title}</span>
         <span className="platime__value">{`4:0${parseInt(id)}`} </span>
       </div>
       <div className="rightDetails">
         {isPlaylist ? (
           <Tooltip title="Add To Playlist">
             <PlaylistAddIcon
-              onClick={() => onPlayListAdd(id)}
+              onClick={() =>
+                onPlayListAdd(id, title, username, albumtitle, thumbnail)
+              }
               className="addToPlaylist"
             />
           </Tooltip>

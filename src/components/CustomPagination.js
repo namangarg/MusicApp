@@ -28,7 +28,8 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
       setIsNextBtnActive("");
     }
   };
-  function btnPrevClick() {
+  function btnPrevClick(event) {
+    event.preventDefault();
     if ((counter - 1) % pageBound === 0) {
       setUpperPageBound(upperPageBound - pageBound);
       setLowerPageBound(lowerPageBound - pageBound);
@@ -37,7 +38,8 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
     setCounter(listid);
     setPrevAndNextBtnClass(listid);
   }
-  function btnIncrementClick() {
+  function btnIncrementClick(event) {
+    event.preventDefault();
     setUpperPageBound(upperPageBound + pageBound);
     setLowerPageBound(lowerPageBound + pageBound);
 
@@ -45,7 +47,8 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
     setCounter(listid);
     setPrevAndNextBtnClass(listid);
   }
-  function btnDecrementClick() {
+  function btnDecrementClick(event) {
+    event.preventDefault();
     setUpperPageBound(upperPageBound - pageBound);
     setLowerPageBound(lowerPageBound - pageBound);
 
@@ -54,7 +57,8 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
     setPrevAndNextBtnClass(listid);
   }
 
-  function btnNextClick() {
+  function btnNextClick(event) {
+    event.preventDefault();
     if (counter + 1 > upperPageBound) {
       setUpperPageBound(upperPageBound + pageBound);
       setLowerPageBound(lowerPageBound + pageBound);
@@ -64,43 +68,45 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
     setPrevAndNextBtnClass(listid);
   }
   const handleClick = event => {
+    event.preventDefault();
     let listid = Number(event.target.id);
     setCounter(listid);
     $("ul li.active").removeClass("active");
-    $("ul li#" + listid).addClass("active");
+    $("ul li#link" + listid).addClass("active");
     setPrevAndNextBtnClass(listid);
   };
   useEffect(() => {
     const value = counter * showPerPage;
     onPaginationChange(value - showPerPage, value);
     $("ul li.active").removeClass("active");
-    $("ul li#" + counter).addClass("active");
+    $("ul li#link" + counter).addClass("active");
     return () => {};
-  }, [counter]);
+  }, [counter, showPerPage, onPaginationChange]);
   const renderPageNumbers = pageNumbers.map(number => {
     if (number === 1 && counter === 1) {
       return (
-        <li key={number} className="page-item active" id={number}>
-          <a className="page-link" id={number} onClick={handleClick}>
+        <li key={number} className="page-item active" id={`link${number}`}>
+          <a className="page-link" id={number} href="/#" onClick={handleClick}>
             {number}
           </a>
         </li>
       );
     } else if (number < upperPageBound + 1 && number > lowerPageBound) {
       return (
-        <li className="page-item" key={number} id={number}>
-          <a className="page-link" id={number} onClick={handleClick}>
+        <li className="page-item" key={number} id={`link${number}`}>
+          <a className="page-link" id={number} href="/#" onClick={handleClick}>
             {number}
           </a>
         </li>
       );
     }
+    return "";
   });
   let pageIncrementBtn = null;
   if (pageNumbers.length > upperPageBound) {
     pageIncrementBtn = (
       <li className="">
-        <a className="page-link" onClick={btnIncrementClick}>
+        <a className="page-link" href="/#" onClick={btnIncrementClick}>
           {" "}
           &hellip;{" "}
         </a>
@@ -111,7 +117,7 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
   if (lowerPageBound >= 1) {
     pageDecrementBtn = (
       <li className="">
-        <a className="page-link" onClick={btnDecrementClick}>
+        <a className="page-link" href="/#" onClick={btnDecrementClick}>
           {" "}
           &hellip;{" "}
         </a>
@@ -121,7 +127,7 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
   let renderPrevBtn = null;
   if (isPrevBtnActive === "disabled") {
     renderPrevBtn = (
-      <li className={isPrevBtnActive}>
+      <li className="page-item disabled">
         <span className="page-link" id="btnPrev">
           {" "}
           Prev{" "}
@@ -131,7 +137,7 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
   } else {
     renderPrevBtn = (
       <li className={isPrevBtnActive}>
-        <a className="page-link" id="btnPrev" onClick={btnPrevClick}>
+        <a className="page-link" href="/#" id="btnPrev" onClick={btnPrevClick}>
           {" "}
           Prev{" "}
         </a>
@@ -141,14 +147,17 @@ function CustomPagination({ showPerPage, onPaginationChange, total }) {
   let renderNextBtn = null;
   if (isNextBtnActive === "disabled") {
     renderNextBtn = (
-      <li className={isNextBtnActive}>
-        <span id="btnNext"> Next </span>
+      <li className="page-item disabled">
+        <span className="page-link" id="btnPrev">
+          {" "}
+          Next{" "}
+        </span>
       </li>
     );
   } else {
     renderNextBtn = (
       <li className={isNextBtnActive}>
-        <a className="page-link" id="btnNext" onClick={btnNextClick}>
+        <a className="page-link" href="/#" id="btnNext" onClick={btnNextClick}>
           {" "}
           Next{" "}
         </a>

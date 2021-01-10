@@ -2,13 +2,15 @@ import React, { useRef } from "react";
 import "./Search.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-function Search(props) {
+import { useHistory, useLocation } from "react-router-dom";
+function Search() {
   let history = useHistory();
+  const location = useLocation();
   const searchRef = useRef("");
   const handleSearchSubmit = () => {
+    console.log(location);
     history.push({
-      pathname: "/allSongs",
+      pathname: location.pathname,
       search: `?query=${searchRef.current.value}`,
       state: { detail: `${searchRef.current.value}` }
     });
